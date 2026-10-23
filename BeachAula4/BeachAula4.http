@@ -1,44 +1,54 @@
 @BeachAula4_HostAddress = http://localhost:5289
 
-
-
-// Listar todas as quadras
+// 1. Listar todas as quadras (GET)
 GET {{BeachAula4_HostAddress}}/api/quadras
 Accept: application/json
 
 ###
-// Listar uma quadra 
+
+// 2. Listar uma quadra por ID (GET)
 GET {{BeachAula4_HostAddress}}/api/quadras/1
 Content-Type: application/json
 
 ###
-// Listar as quadras ativas
+
+// 3. Listar as quadras ativas (GET)
 GET {{BeachAula4_HostAddress}}/api/quadras/ativas
 Accept: application/json
 
 ###
-// Adicionar uma quadra
+
+// 4. Consulta Avançada LINQ - Quadras ativas até R$ 100 ordenadas por preço (GET)
+GET {{BeachAula4_HostAddress}}/api/quadras/por-preco?precoMaximo=100.00
+Accept: application/json
+
+###
+
+// 5. Adicionar uma nova quadra (POST)
 POST {{BeachAula4_HostAddress}}/api/quadras
 Content-Type: application/json
 
 {
   "Name": "Quadra dos Fundos",
   "ValorHora": 90.00,
-  "Ativa":true,
-  "Descricao":"Quadra de areia, descoberta, sem iluminação."
+  "Ativa": true,
+  "Descricao": "Quadra de areia, descoberta, sem iluminação."
 }
 
 ###
-// Atualizar uma quadra
+
+// 6. Atualizar uma quadra existente (PUT)
 PUT {{BeachAula4_HostAddress}}/api/quadras/1
 Content-Type: application/json
 
 {
+  "Name": "Quadra dos Fundos Reformada",
   "ValorHora": 120.00,
-  "Ativa":true,
-  "Descricao":"Quadra de areia, coberta, com iluminação."
+  "Ativa": true,
+  "Descricao": "Quadra de areia, coberta, com iluminação."
 }
 
 ###
-// Excluir uma quadra
+
+// 7. Excluir uma quadra por ID (DELETE)
 DELETE {{BeachAula4_HostAddress}}/api/quadras/5

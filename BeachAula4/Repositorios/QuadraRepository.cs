@@ -59,5 +59,14 @@ namespace BeachAula4.Repositorios
             await context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Quadra>> ListarAtivasPorPrecoMaximoAsync(decimal precoMaximo)
+        {
+            return await context.Quadras
+                .AsNoTracking()
+                .Where(q => q.Ativa && q.ValorHora <= precoMaximo)
+                .OrderBy(q => q.ValorHora)
+                .ToListAsync();
+        }
     }
 }

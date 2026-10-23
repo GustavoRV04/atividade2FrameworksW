@@ -10,5 +10,6 @@ namespace BeachAula4.Interfaces
         Task AdicionarAsync(Quadra quadra);
         Task<bool> AtualizarAsync(Quadra quadra);
         Task<bool> ExcluirAsync(int id);
+        Task<List<Quadra>> ListarAtivasPorPrecoMaximoAsync(decimal precoMaximo);
     }
 }
